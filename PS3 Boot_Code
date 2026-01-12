@@ -1,0 +1,19 @@
+#include <ppu-asm.h>
+#include <psl1ght/lv2.h>
+#include <psl1ght/graphics.h>
+
+int main() {
+    init_graphics();
+
+    draw_text("AMONG US LOADING", 100, 100);
+
+    int frame = 0;
+    while (frame < 300) { // ~5 seconds
+        draw_text("Loading" + std::string(frame / 60 % 4, '.'), 100, 140);
+        flip_buffers();
+        frame++;
+    }
+
+    shutdown_graphics();
+    return 0;
+}
